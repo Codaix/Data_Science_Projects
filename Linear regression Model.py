@@ -55,7 +55,18 @@ plt.xlabel("x_scaled")
 plt.ylabel("values of the columns selected")
 plt.show()
 
-#next step is to -> train test -> train the linear regression model -> predict on test data-> Evaluate the model
+#train test model:
+x = df[['mass']]
+y = df['orbital_period']
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state = 42)
+
+#linear regression on the model:
+model = LinearRegression()
+model.fit(x_train,y_train)
+
+
+#next step is to -> predict on test data-> Evaluate the model
+
 
 ##----- yet to be completed. -----##
 
