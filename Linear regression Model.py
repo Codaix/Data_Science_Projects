@@ -22,7 +22,7 @@ df = pd.DataFrame(planets, columns=["number", "orbital_period","mass","distance"
 sns.boxenplot(data= df[['number', 'orbital_period', 'mass', 'distance', 'year']])
 plt.show() 
 #output: the orbital_period has the highest number of outliers and the others dont really have any outliers.
-    
+
 #handling not null values:
 df['orbital_period']=df['orbital_period'].fillna(df['orbital_period'].median())
 df['mass'] = df['mass'].fillna(df['mass'].mean())
@@ -37,6 +37,8 @@ from sklearn.preprocessing import MinMaxScaler #normalises the dataset into stan
 from sklearn.linear_model import LinearRegression #actual linear regression model
 
 from sklearn.metrics import mean_squared_error # for getting the MSE
+
+from sklearn.metrics import r2_score #for getting the r2 score
 
 
 #defining coordinates X and Y of the model where X has the independent variables and Y is the target value or
@@ -64,11 +66,23 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.2, random
 model = LinearRegression()
 model.fit(x_train,y_train)
 
+#predicting the model:='
+y_pred = model.predict(x_test)
 
-#next step is to -> predict on test data-> Evaluate the model
+#Evaluate:
+print('R2 score: ', r2_score(y_test, y_pred))
+print("MSE: ", mean_squared_error(y_test, y_pred))
+
+#visualisation fro the test set:
+plt.scatter(x_test, y_test, color = 'blue')
+plt.plot(x_test, model.predict(x_test), color = 'red', linewidth = 3)
+plt.xlabel("Mass")
+plt.ylabel("Orbital_Period")
+plt.title("Predicted Model")
+plt.show()
 
 
-##----- yet to be completed. -----##
+##----- Completed -----##
 
 
 
