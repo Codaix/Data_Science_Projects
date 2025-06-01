@@ -11,7 +11,7 @@ print(planets.info())
 print(planets.describe())
 print(planets.head())
 print(planets.tail())
-#making the datset
+#making the dataset
 #here, the columns are taken the one having some na values soo as to revise the na handling concept :3
 
 #df = planets[["number","orbital_period", "mass", "year"]]
