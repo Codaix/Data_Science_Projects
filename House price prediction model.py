@@ -5,3 +5,4 @@ import matplotlib.pyplot as plt
 #print(sns.get_dataset_names())
 data = pd.read_csv()
 print(data)
+
